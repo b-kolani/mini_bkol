@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor_other.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soujaour <soujaour@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bkolani <bkolani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 15:28:44 by bkolani           #+#    #+#             */
-/*   Updated: 2025/03/10 16:32:29 by soujaour         ###   ########.fr       */
+/*   Updated: 2025/03/12 20:32:23 by bkolani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	buildin_excutor(t_ast *tree, char **argv, t_shell *mini)
 	if (ft_strncmp("unset", argv[0], SIZE_MAX) == 0)
 		builtin_unset(mini->env, argv);
 	if (ft_strncmp("env", argv[0], SIZE_MAX) == 0)
-		builtin_env(mini->env, argv);
+		builtin_env(mini->env);
 	if (ft_strncmp("exit", argv[0], SIZE_MAX) == 0)
 	{
 		if (isatty(STDOUT_FILENO) && isatty(STDIN_FILENO) && tree->f == 0)

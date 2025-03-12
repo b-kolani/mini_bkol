@@ -6,7 +6,7 @@
 /*   By: bkolani <bkolani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 10:22:08 by soujaour          #+#    #+#             */
-/*   Updated: 2025/03/12 18:18:02 by bkolani          ###   ########.fr       */
+/*   Updated: 2025/03/12 20:32:00 by bkolani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,7 +225,7 @@ char	*store_pwd(char *store_it, int flag);
 void	builtin_pwd(t_shell *mini);
 void	builtin_echo(char **argv, int *status);
 void	builtin_exit(char **argv, int *status);
-void	builtin_env(t_env *env, char **argv);
+void	builtin_env(t_env *env);
 void	builtin_cd(t_env *env, char **argv, int *status);
 int		builtin_export(t_env *env, char **argv, int flag);
 void	builtin_unset(t_env *env, char **argv);

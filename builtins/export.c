@@ -6,7 +6,7 @@
 /*   By: bkolani <bkolani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 20:56:00 by bkolani           #+#    #+#             */
-/*   Updated: 2025/03/12 18:32:54 by bkolani          ###   ########.fr       */
+/*   Updated: 2025/03/12 20:38:46 by bkolani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 // Handle export command without args
 static void	export_with_no_args(t_env *env, char *line)
 {
-	static t_env	*head;
 	t_env			*lst_env;
 
 	lst_env = NULL;
@@ -23,19 +22,19 @@ static void	export_with_no_args(t_env *env, char *line)
 	{
 		lst_env = ft_malloc_bkol(sizeof(t_env), ALLOCATE);
 		lst_env->key = ft_strdup(line, BKOLANI);
+		lst_env->value = NULL;
+		lst_env->full = ft_strdup(line, BKOLANI);
 		lst_env->next = NULL;
-		ft_lstadd_back_env(&head, lst_env);
+		ft_lstadd_back_env(&env, lst_env);
 		return ;
 	}
 	while (env)
 	{
-		printf("declare -x %s=%c%s%c\n", env->key, '"', env->value, '"');
+		if (env->value)
+			printf("declare -x %s=%c%s%c\n", env->key, '"', env->value, '"');
+		else
+			printf("declare -x %s\n", env->full);
 		env = env->next;
-	}
-	while (head)
-	{
-		printf("declare -x %s\n", head->key);
-		head = head->next;
 	}
 }
 
