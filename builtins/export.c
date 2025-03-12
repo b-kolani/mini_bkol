@@ -6,7 +6,7 @@
 /*   By: bkolani <bkolani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 20:56:00 by bkolani           #+#    #+#             */
-/*   Updated: 2025/03/12 13:20:01 by bkolani          ###   ########.fr       */
+/*   Updated: 2025/03/12 18:17:18 by bkolani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,16 @@
 // Handle export command without args
 static void	export_with_no_args(t_env *env, char *line)
 {
-	char		**argv;
-	int			i;
+	static t_env	*head;
+	t_env			*lst_env;
 
-	argv = export_with_no_args_alloc();
+	lst_env = NULL;
 	if (line)
 	{
-		i = 0;
-		while (argv[i])
-			i++;
-		if (i < (100000 - 1))
-		{
-			argv[i] = ft_strdup(line, BKOLANI);
-			argv[i + 1] = NULL;
-		}
+		lst_env = ft_malloc_bkol(sizeof(t_env), ALLOCATE);
+		lst_env->key = ft_strdup(line, BKOLANI);
+		lst_env->next = NULL;
+		ft_lstadd_back_env(&head, lst_env);
 		return ;
 	}
 	while (env)
@@ -36,9 +32,11 @@ static void	export_with_no_args(t_env *env, char *line)
 		printf("declare -x %s\n", env->full);
 		env = env->next;
 	}
-	i = -1;
-	while (argv[++i])
-		printf("declare -x %s\n", argv[i]);
+	while (head)
+	{
+		printf("declare -x %s\n", head->key);
+		head = head->next;
+	}
 }
 
 static void	process_env_var(t_env *env, char **str_tab, char *line, int action)

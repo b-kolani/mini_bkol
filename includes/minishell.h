@@ -6,7 +6,7 @@
 /*   By: bkolani <bkolani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 10:22:08 by soujaour          #+#    #+#             */
-/*   Updated: 2025/03/12 13:20:46 by bkolani          ###   ########.fr       */
+/*   Updated: 2025/03/12 18:18:02 by bkolani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,7 +229,6 @@ void	builtin_env(t_env *env, char **argv);
 void	builtin_cd(t_env *env, char **argv, int *status);
 int		builtin_export(t_env *env, char **argv, int flag);
 void	builtin_unset(t_env *env, char **argv);
-char	**export_with_no_args_alloc(void);
 
 // Expanding
 char	**expand_cmd(t_chain *cmd, t_argv *args, t_shell *mini);

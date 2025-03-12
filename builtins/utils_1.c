@@ -6,7 +6,7 @@
 /*   By: bkolani <bkolani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 21:09:05 by bkolani           #+#    #+#             */
-/*   Updated: 2025/03/12 13:20:07 by bkolani          ###   ########.fr       */
+/*   Updated: 2025/03/12 18:17:36 by bkolani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,4 @@ void	update_env_concat(t_env *env, t_env *new_env, const char *str)
 		new_full = ft_strjoin(new_env->key, "=", BKOLANI);
 		temp->full = ft_strjoin(new_full, temp->value, BKOLANI);
 	}
-}
-
-char	**export_with_no_args_alloc(void)
-{
-	int			i;
-	static char	**argv;
-
-	i = 0;
-	if (argv == NULL)
-	{
-		argv = ft_malloc_bkol(sizeof(char *) * 100000, ALLOCATE);
-		ft_bzero(argv, 0);
-	}
-	return (argv);
 }
