@@ -6,7 +6,7 @@
 /*   By: bkolani <bkolani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 20:56:00 by bkolani           #+#    #+#             */
-/*   Updated: 2025/03/12 18:17:18 by bkolani          ###   ########.fr       */
+/*   Updated: 2025/03/12 18:32:54 by bkolani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	export_with_no_args(t_env *env, char *line)
 	}
 	while (env)
 	{
-		printf("declare -x %s\n", env->full);
+		printf("declare -x %s=%c%s%c\n", env->key, '"', env->value, '"');
 		env = env->next;
 	}
 	while (head)
